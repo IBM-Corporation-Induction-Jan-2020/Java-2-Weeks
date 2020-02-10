@@ -1,6 +1,7 @@
 package com.Biswajit.test;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Map.Entry;
@@ -25,17 +26,17 @@ public class EcommerceOps {
 	String itemName;
 	int price, quantity;
 	String name;
-	String contactNumber;
+	long contactNumber;
 	String mailId;
 
 	public String process(Scanner sc) {
 		return (sc.nextLine());
 	}
 
-	public void create(HashMap<String, EcommerceUser> hmUser) {
+	public void create(HashMap<Long, EcommerceUser> hmUser) {
 		System.out.println("Enter name, contact number, mail Id");
 		name = process(sc);
-		contactNumber = process(sc);
+		contactNumber = Long.parseLong(process(sc));
 		mailId = process(sc);
 		/*
 		 * System.out.println("Enter shopping cart details: product, quantity, price");
@@ -44,15 +45,15 @@ public class EcommerceOps {
 		 */
 		EcommerceUser eUser = new EcommerceUser(name, contactNumber, mailId);
 		hmUser.put(contactNumber, eUser);
-
-		System.out.println(hmUser.get(contactNumber));
+		System.out.println("New user created: ");
+		System.out.println(hmUser.get(contactNumber) + "\n");
 
 	}
 
-	public void purchase(HashMap<String, Ecommerce> hm, HashMap<String, EcommerceUser> hmUser) {
+	public void purchase(HashMap<String, Ecommerce> hm, HashMap<Long, EcommerceUser> hmUser) {
 
 		System.out.println("To Purchase items, please submit your contact number");
-		contactNumber = process(sc);
+		contactNumber = Long.parseLong(process(sc));
 		if (hmUser.containsKey(contactNumber)) {
 			eUser = hmUser.get(contactNumber);
 			System.out.println("Profile found");
@@ -84,16 +85,16 @@ public class EcommerceOps {
 
 	}
 
-	public void returnItem(HashMap<String, Ecommerce> hm, HashMap<String, EcommerceUser> hmUser) {
+	public void returnItem(HashMap<String, Ecommerce> hm, HashMap<Long, EcommerceUser> hmUser) {
 
 		System.out.println("To Return items, please submit your contact number");
-		contactNumber = process(sc);
+		contactNumber = Long.parseLong(process(sc));
 		if (hmUser.containsKey(contactNumber)) {
 			eUser = hmUser.get(contactNumber);
 			System.out.println("Profile found");
-			
+
 			itemName = eUser.getItemName().toLowerCase();
-			System.out.println("The product to be returned is: "+itemName);
+			System.out.println("The product to be returned is: " + itemName);
 			if (hm.containsKey(itemName)) {
 				product = hm.get(itemName);
 
@@ -109,7 +110,8 @@ public class EcommerceOps {
 				eUser.setQuantity(0);
 				eUser.setPrice(0);
 			} else {
-				System.out.println("Sorry, The item you are looking for cannot be returned as it is not in the database");
+				System.out
+						.println("Sorry, The item you are looking for cannot be returned as it is not in the database");
 			}
 		} else {
 			System.out.println("Contact Number not registered with Company, Kindly Create user first");
@@ -117,28 +119,24 @@ public class EcommerceOps {
 
 	}
 
-	public void report(HashMap<String, Ecommerce> hm, HashMap<String, EcommerceUser> hmUser) {
+	public void report(HashMap<String, Ecommerce> hm, HashMap<Long, EcommerceUser> hmUser) {
 
 		System.out.println("-----Details of Items present in Database-----\n\n");
-		java.util.Iterator<Entry<String, Ecommerce>> hmIterator = hm.entrySet().iterator(); 
-		  
-	       
-        while (hmIterator.hasNext()) { 
-            Map.Entry mapElement = (Map.Entry)hmIterator.next(); 
-            System.out.println(mapElement.getValue() ); 
-        } 
-        
-        System.out.println("------Details of Users in Database-------\n\n ");
-        java.util.Iterator<Entry<String, EcommerceUser>> hmIterUser = hmUser.entrySet().iterator(); 
-		  
-	       
-        while (hmIterUser.hasNext()) { 
-            Map.Entry mapElement = (Map.Entry)hmIterUser.next(); 
-            System.out.println(mapElement.getValue() ); 
-        } 
-        System.out.println("Total Sale ="+totalSale);
-        
-        
-        
+		java.util.Iterator<Entry<String, Ecommerce>> hmIterator = hm.entrySet().iterator();
+
+		while (hmIterator.hasNext()) {
+			Map.Entry mapElement = (Map.Entry) hmIterator.next();
+			System.out.println(mapElement.getValue());
+		}
+
+		System.out.println("\n\n------Details of Users in Database-------\n\n ");
+		Iterator<Entry<Long, EcommerceUser>> hmIterUser = hmUser.entrySet().iterator();
+
+		while (hmIterUser.hasNext()) {
+			Map.Entry mapElement = (Map.Entry) hmIterUser.next();
+			System.out.println(mapElement.getValue());
+		}
+		System.out.println("\n\nTotal Sale =" + totalSale);
+
 	}
 }
