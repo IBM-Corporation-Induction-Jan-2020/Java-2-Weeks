@@ -1,0 +1,17 @@
+Application Name: eCommerce Application.
+
+A. Execute the program with 3 fixed eCommerce service providers & threir products.
+	Ex: Amazon(Electronics: Laptop 20k 10q, Tablet 10k 20q, Mobile 5k 40q), 
+		FlipKart (Books: Traditions 1000 50q, Spiritual 500 100q, SciFi 250 200q), 
+		SnapDeal (Groceries: Rice 400 50q, Pulses 200 200q, Oils 125 500q)
+	-----	 
+B. Options to be shown to the user:
+	I. User Creation II. Purchase Product III. Return Product IV. Reports
+C. User Creation: name, contact number, mail id, shopping cart details (product, quantity, price).
+D. Purchase Product: Choose User, Choose Product, Choose Quantity, Check availability,
+			Calculate price, Add to cart, reduce the quantity from the eCommerce.
+	-----
+E. Return Product: Choose User, Choose Product, Reason to return, refund 75% price,
+			update shopping cart, update product quantity.
+F. Report about the Products, Users, Total Sale.
+
