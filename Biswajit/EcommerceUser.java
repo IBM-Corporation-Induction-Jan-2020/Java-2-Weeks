@@ -4,28 +4,26 @@ public class EcommerceUser {
 	// name, contact number, mail id, shopping cart details (product, quantity,
 	// price).
 	String name;
-	String contactNumber;
+	long contactNumber;
 	String mailId;
 	String itemName;
 	int quantity;
 	int price;
 
-
-	public EcommerceUser(String name, String contactNumber, String mailId) {
+	public EcommerceUser(String name, long contactNumber, String mailId) {
 		super();
 		this.name = name;
 		this.contactNumber = contactNumber;
 		this.mailId = mailId;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "EcommerceUser [name=" + name + ", contactNumber=" + contactNumber + ", mailId=" + mailId + ", itemName="
 				+ itemName + ", quantity=" + quantity + ", price=" + price + "]";
 	}
 
-	public EcommerceUser(String name, String contactNumber, String mailId, String itemName, int quantity, int price) {
+	public EcommerceUser(String name, long contactNumber, String mailId, String itemName, int quantity, int price) {
 		super();
 		this.name = name;
 		this.contactNumber = contactNumber;
@@ -43,11 +41,11 @@ public class EcommerceUser {
 		this.name = name;
 	}
 
-	public String getContactNumber() {
+	public long getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(String contactNumber) {
+	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 
@@ -82,7 +80,5 @@ public class EcommerceUser {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
-	
 
 }
