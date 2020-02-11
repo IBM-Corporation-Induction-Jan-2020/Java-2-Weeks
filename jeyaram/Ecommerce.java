@@ -1,8 +1,6 @@
 package com.Jeyaram.classtest1;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 //This is the bean class
 public class Ecommerce {
