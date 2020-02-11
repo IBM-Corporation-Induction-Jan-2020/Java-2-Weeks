@@ -1,9 +1,7 @@
 package com.Jeyaram.classtest1;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Scanner;
 
 //Functionality Class
@@ -12,7 +10,14 @@ public class EcommerceOps {
 	Scanner sc = new Scanner(System.in);
 
 	HashMap<Ecommerce, HashMap<String, Integer>> bou = new HashMap<Ecommerce, HashMap<String, Integer>>();
+	Hashtable<String, Integer> iquan = new Hashtable<String, Integer>();
+	
+	public EcommerceOps(Hashtable<String, Integer> iquan) {
+		this.iquan = iquan;
+	}
 
+	
+	
 	public void createEmployee() {
 
 		String name;
@@ -50,29 +55,42 @@ public class EcommerceOps {
 				System.out.println("Enter the quantity");
 				quantity = Integer.parseInt(sc.nextLine());
 
-				e.l.put(product, quantity);
-				bou.put(e, e.l);
-				display(e.getName());
-				billing(e.l);
-				break;
+				if(quantity <= iquan.get(product)) {
+					e.l.put(product, quantity);
+					bou.put(e, e.l);
+					display(e.getName());
+					billing(e.l);
+					iquan.replace(product, iquan.get(product)-quantity);
+					break;
+				}else {
+					System.out.println("The quantity is not available");
+				}
+				
 			} else {
 				System.out.println("Check your username or Create a new user");
 			}
 		}
-
 	}
 
 	public void returnProduct(String name) throws NullPointerException {
 		String ret;
+		int quantity;
 		for (Ecommerce e : bou.keySet()) {
 			if (name.equalsIgnoreCase(e.getName())) {
 				System.out.println("Enter the item you want to return:");
 				ret = sc.nextLine();
-				if (e.l.containsKey(ret)) {
-					e.l.remove(ret);
-					System.out.println("The item is removed from the cart");
+				System.out.println("Enter the quantity");
+				quantity= Integer.parseInt(sc.nextLine());
+				if (e.l.containsKey(ret) && e.l.get(ret) >= quantity) {
+					if(e.l.get(ret)==quantity) {
+						e.l.remove(ret);
+						System.out.println("The item is removed from the cart");
+						break;
+					}
+					e.l.replace(ret, e.l.get(ret)-quantity);
 					display(e.getName());
 					billing(e.l);
+					iquan.replace(ret, iquan.get(ret)+quantity);
 				} else {
 					System.out.println("You didn't purchase this item");
 				}
@@ -110,6 +128,7 @@ public class EcommerceOps {
 			count++;
 		}
 		System.out.println("The number of users in the system are " + count);
+		System.out.println("The stock left is\n"+iquan);
 	}
 
 	public void display(String name) {
