@@ -72,6 +72,14 @@ public class ECommerce {
 				case 4:
 					System.out.println("Enter company to report 1.Amazon  2.Flipkart 3.Snapdeal 4.Exit:: ");
 					ch=sc.nextInt();
+					
+					if(ch==1)
+						Operation.displayAmazon();
+					else if(ch==2)	
+						Operation.displayFlipkart();
+					else if(ch==3)
+						Operation.displaySnapdeal();
+					
 					System.out.println("Enter product to report about:: ");
 					product=sc.next();
 				default:
