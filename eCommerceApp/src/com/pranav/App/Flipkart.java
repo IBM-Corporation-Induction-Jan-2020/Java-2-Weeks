@@ -64,7 +64,8 @@ public class Flipkart {
 		for(int i=0;i<3;i++)
 		{
 		System.out.println(s[i]+" "+ q[i]);
-	}		
+	}	
+		System.out.println("Flipkarts total sale " + cost);
 	}
 	
 

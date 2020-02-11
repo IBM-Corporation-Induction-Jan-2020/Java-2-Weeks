@@ -7,6 +7,8 @@ public class Snapdeal {
 	static String s[]  = {"Rice", "Pulses", "Oil"};
 	static int p[] = {400,200,125};	
 	static int q[] = {50,200,500};
+	static double amount=0;
+	static int cost=0;
 	HashMap<Integer, HashMap<Integer, String>> purchase(int cID, HashMap<Integer,HashMap<Integer,String>> hm)
 	{
 	System.out.println("Which groceries do you want to buy from Snapdeal");
@@ -57,14 +59,19 @@ public class Snapdeal {
 				q[i]=q[i]+rqa;
 				x=i;
 			}
-			System.out.println("You will be refunded " + (0.75*rqa*p[x]));
-		}		
+			
+		}	
+		amount = (0.75*rqa*p[x]);
+		System.out.println("You will be refunded " + amount);
+		cost = (int) (cost-amount);
 	}
 	public void getRec3() {
 		for(int i=0;i<3;i++)
 		{
 		System.out.println(s[i]+" "+ q[i]);
-	}		
+		
+	}	
+		System.out.println("Total Sales of Snapdeal " + cost);
 	}
 	
 }

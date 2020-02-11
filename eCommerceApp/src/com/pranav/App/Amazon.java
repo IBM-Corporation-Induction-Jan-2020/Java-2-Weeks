@@ -67,5 +67,7 @@ public class Amazon {
 		for(int i=0;i<3;i++)
 		{
 		System.out.println(s[i]+" "+ q[i]);
+		
+	}
 		System.out.println("Amazon's Sale" + cost);
-	}}}
+		}}
