@@ -31,7 +31,7 @@ public class EcommerceApp {
 
 		Scanner sc = new Scanner(System.in);
 		int choice;
-		EcommerceOps eo = new EcommerceOps();
+		EcommerceOps eo = new EcommerceOps(iquan);
 
 		do {
 
