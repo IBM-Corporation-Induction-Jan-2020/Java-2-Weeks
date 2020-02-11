@@ -82,6 +82,7 @@ public class ECommerce {
 					
 					System.out.println("Enter product to report about:: ");
 					product=sc.next();
+					break;
 				default:
 					System.out.println("Wrong input");
 			}
